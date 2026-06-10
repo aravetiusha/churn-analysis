@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Churn Analysis</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: #f4f7fc;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#1e3a8a;
+}
+
+.dashboard{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
+
+.card{
+    background:white;
+    width:23%;
+    min-width:220px;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.card h2{
+    color:#2563eb;
+    font-size:35px;
+}
+
+.chart-container{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.insights{
+    background:white;
+    margin-top:20px;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.insights h2{
+    color:#1e3a8a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📊 Customer Churn Analysis Dashboard</h1>
+
+<div class="dashboard">
+
+<div class="card">
+<h2>1000</h2>
+<p>Total Customers</p>
+</div>
+
+<div class="card">
+<h2>730</h2>
+<p>Retained</p>
+</div>
+
+<div class="card">
+<h2>270</h2>
+<p>Churned</p>
+</div>
+
+<div class="card">
+<h2>27%</h2>
+<p>Churn Rate</p>
+</div>
+
+</div>
+
+<div class="chart-container">
+<canvas id="barChart"></canvas>
+</div>
+
+<div class="insights">
+<h2>Business Insights</h2>
+<ul>
+<li>High monthly charges are the biggest churn driver.</li>
+<li>Poor customer support contributes significantly to customer loss.</li>
+<li>Contract expiration increases churn probability.</li>
+<li>Loyal customers staying over 2 years show much lower churn.</li>
+<li>Retention campaigns should target high-risk customers.</li>
+</ul>
+</div>
+
+</div>
+
+<script>
+const ctx = document.getElementById('barChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [
+            'High Charges',
+            'Poor Support',
+            'Contract End',
+            'Competitor',
+            'Service Issues'
+        ],
+        datasets: [{
+            label: 'Number of Churned Customers',
+            data: [95, 70, 55, 35, 15],
+            backgroundColor: [
+                '#2563eb',
+                '#3b82f6',
+                '#60a5fa',
+                '#93c5fd',
+                '#bfdbfe'
+            ],
+            borderRadius: 8
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Top Reasons for Customer Churn'
+            },
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>
+
+</body>
+</html>
